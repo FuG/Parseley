@@ -1,18 +1,16 @@
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfilePage {
+public class MemberReviewsPage {
     Document page;
     String pageUrl;
 
-    public ProfilePage(String pageUrl) throws IOException {
-        page = Jsoup.connect(pageUrl).get();
+    public MemberReviewsPage(String pageUrl) {
+        page = HttpHandler.get(pageUrl);
         this.pageUrl = pageUrl;
     }
 
