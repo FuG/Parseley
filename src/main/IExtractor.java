@@ -12,4 +12,5 @@ public interface IExtractor {
     public List<String> getAllProfileLinks(Document doc);
 
     public int getTotalReviewsForProfile(Document doc);
+    //some
 }

@@ -60,6 +60,7 @@ public class AmazonExtractor implements IExtractor {
         int spaceAfterNumber = splits[1].indexOf(' ');
         String number = splits[1].substring(0, spaceAfterNumber);
         int reviewCount = Integer.parseInt(number);
+        //some
 
         return reviewCount;
     }

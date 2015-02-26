@@ -12,7 +12,7 @@ public class ParseleyMain {
 
         AmazonExtractor extractor = new AmazonExtractor();
 
-//        Document doc = extractor.getPage(targetUrl);
+        Document doc = extractor.getPage(targetUrl);
 //        String allReviewsUrl = extractor.getAllReviewsLink(doc);
 //        Thread.sleep(300);
 //
