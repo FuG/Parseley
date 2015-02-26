@@ -12,17 +12,8 @@ public class ParseleyMain {
 
         AmazonExtractor extractor = new AmazonExtractor();
 
-        Document doc = extractor.getPage(targetUrl);
-//        String allReviewsUrl = extractor.getAllReviewsLink(doc);
-//        Thread.sleep(300);
-//
-//        Document reviewsDoc = extractor.getPage(allReviewsUrl);
-//        List<String> profileLinks = extractor.getAllProfileLinks(reviewsDoc);
-//        Thread.sleep(300);
 
-        Document profileDoc = extractor.getPage(/*profileLinks.get(0)*/ "http://www.Amazon.com/gp/cdp/member-reviews/A2QA25UQBWMKS6?ie=UTF8&sort_by=MostRecentReview");
-        int totalReviews = extractor.getTotalReviewsForProfile(profileDoc);
 
-        System.out.println(totalReviews);
+        System.out.println();
     }
 }
