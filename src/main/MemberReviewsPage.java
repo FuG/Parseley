@@ -34,4 +34,24 @@ public class MemberReviewsPage {
 
         return reviewCount;
     }
+
+    public boolean allReviewsAreSameDay() {
+        Elements reviewDates = page.getElementsByTag("nobr");
+        String pageString = page.toString();
+
+        String reviewDate = reviewDates.first().ownText();
+
+        for (Element rd : reviewDates) {
+            System.out.println(rd.ownText());
+            if (!rd.ownText().equals(reviewDate)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void print() {
+        System.out.println(page);
+    }
 }

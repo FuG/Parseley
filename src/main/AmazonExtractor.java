@@ -25,7 +25,7 @@ public class AmazonExtractor {
             productReviewPages.add(new ProductReviewPage(reviewPageUrl, domain));
             try {
                 System.out.println("Grabbed Page# " + i);
-                Thread.sleep(200);
+                Thread.sleep(HttpHandler.sleepMillis);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -43,18 +43,35 @@ public class AmazonExtractor {
             memberReviewsPageList.add(new MemberReviewsPage(url));
             try {
                 System.out.println("Profile added " + memberReviewsPageList.size());
-                Thread.sleep(200);
+                Thread.sleep(HttpHandler.sleepMillis);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
         int totalReviewCount = 0;
+        int reviewCountOfLessThanThree = 0;
+        int reviewCountOfSameDate = 0;
 
         for (MemberReviewsPage mrp : memberReviewsPageList) {
-            totalReviewCount +=mrp.getTotalReviewsForProfile();
+            int profileReviewCount = mrp.getTotalReviewsForProfile();
+            System.out.println();
+            System.out.println("Profile Review Count: " + profileReviewCount);
+            if (profileReviewCount <= 3) {
+                reviewCountOfLessThanThree += 1;
+                continue;
+            }
+            if (mrp.allReviewsAreSameDay()) {
+                reviewCountOfSameDate += 1;
+                continue;
+            }
         }
 
-        System.out.println("Total Reviews Of All Review Members: " + totalReviewCount);
+        totalReviewCount = reviewCountOfSameDate + reviewCountOfLessThanThree;
+        System.out.println();
+        System.out.println("--- Product Review Analysis ---");
+        System.out.println("Profiles w/ < 3 reviews: " + reviewCountOfLessThanThree);
+        System.out.println("Profiles w/ all reviews posted same date: " + reviewCountOfSameDate);
+        System.out.println("Fake/Total: " + totalReviewCount + "/" + memberReviewsPageList.size());
     }
 }

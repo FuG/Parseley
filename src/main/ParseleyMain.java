@@ -3,13 +3,14 @@ import java.io.IOException;
 public class ParseleyMain {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String path = "/iPad-mini-case-INVELLOP-Leatherette/dp/B00GH0P21Y/ref=sr_1_3?ie=UTF8&qid=1424737604&sr=8-3&keywords=ipad+mini+cover";
-//        String path = "/dp/B00O5VZ00U";
+        String path = "/Rated-Veggie-Capsules-E-Book-Blueprint/dp/B00IZLM3QA";
 
         AmazonExtractor extractor = new AmazonExtractor(path);
 
+        long startMillis = System.currentTimeMillis();
         extractor.run();
-
+        System.out.println();
+        System.out.println("Script runtime: " + (System.currentTimeMillis() - startMillis) / 1000 + " seconds");
         System.out.println();
     }
 }

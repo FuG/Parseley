@@ -4,7 +4,7 @@ import org.jsoup.nodes.Document;
 
 public class HttpHandler {
     static int retryCount = 5;
-    static int sleepMillis = 100;
+    static int sleepMillis = 1000;
 
     public static Document get(String url) {
         int retry = 0;
